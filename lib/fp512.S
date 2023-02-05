@@ -9,6 +9,28 @@ p:
     .quad 0x1b81b90533c6c87b, 0xc2721bf457aca835, 0x516730cc1f0b4f25, 0xa7aac6c567f35507
     .quad 0x5afbfcc69322c9cd, 0xb42d083aedc88c42, 0xfc8ab0d15e3e4c4a, 0x65b48e8f740f89bf
 
+/* 追加 */
+.global fp_0
+fp_0:
+    .quad 0x0
+
+.global fp_1
+fp_1:
+    .quad 0xc8fc8df598726f0a, 0x7b1bc81750a6af95, 0x5d319e67c1e961b4, 0xb0aa7275301955f1
+    .quad 0x4a080672d9ba6c64, 0x97a5ef8a246ee77b, 0x06ea9e5d4383676a, 0x3496e2e117e0ec80
+
+.global p_minus_2
+p_minus_2:
+    .quad 0x1b81b90533c6c879, 0xc2721bf457aca835, 0x516730cc1f0b4f25, 0xa7aac6c567f35507
+    .quad 0x5afbfcc69322c9cd, 0xb42d083aedc88c42, 0xfc8ab0d15e3e4c4a, 0x65b48e8f740f89bf
+
+.global four_sqrt_p
+four_sqrt_p:
+    .quad 0x17895e71e1a20b3f, 0x38d0cd95f8636a56, 0x142b9541e59682cd, 0x856f1399d91d6592
+    .quad 0x02
+
+/* 追加ここまで*/
+
 
 .global R_mod_p
 R_mod_p: /* 2^512 mod p */

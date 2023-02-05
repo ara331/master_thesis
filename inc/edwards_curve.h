@@ -26,6 +26,14 @@ uint64_t FP_ADD_COMPUTED,	// Variable used for counting the number of field addi
 	#include "simba_dummyfree.h"	// dummy-free csidh using two torsion points T_{+} and T_{-}
 #elif defined RELATION
 	#include "simba_relation.h"
+#elif defined RELATION_2
+	#include "simba_relation_2.h"
+#elif defined VECTOR
+	#include "vector.h"
+#elif defined PROPOSAL_1
+	#include "simba_proposal_1.h"
+#elif defined PROPOSAL_2
+	#include "simba_proposal_2.h"
 #endif
 
 // Functions related with the point arithmetic
@@ -47,7 +55,11 @@ void yISOG(proj Pk[], proj C, const proj P, const proj A, const uint8_t i);
 void yEVAL(proj R, const proj Q, const proj Pk[], const uint8_t i);
 
 // functions related with the action
-void action_evaluation(proj C, const uint8_t key[], const proj A);
+#ifdef PROPOSAL_1
+	void action_evaluation(proj C1, proj C2, const uint8_t key[], const proj A1, const proj A2);
+#else
+	void action_evaluation(proj C, const uint8_t key[], const proj A);
+#endif
 void random_key(uint8_t key[]);
 void printf_key(uint8_t key[], char *c);
 

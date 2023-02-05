@@ -7,17 +7,29 @@
 #define MY 0
 
 // (each entry corresponds to the number of degree-(l_i) to be required in the action: this the one given in MCR work)
+// static int8_t B[] =	{
+//  7,  7,  7,  7,  7,  7,  7,  7,
+//  7,  7,  7,  7,  7,  7,  7,  7,
+//  8,  8,  8,  8,  8,  8,  8, 11,
+// 11, 11, 11, 11, 11, 11, 11, 11,
+// 11, 11, 11, 11, 11, 11, 11, 11,
+// 11, 13, 13, 13, 13, 13, 13, 13, 
+// 13, 13, 13, 13, 13, 13, 13, 13, 
+// 13, 13, 13, 13, 13, 13, 13, 13, 
+// 13, 13, 13, 13, 13,  5,  7,  7, 
+//  7,  7 
+// };
 static int8_t B[] =	{
- 7,  7,  7,  7,  7,  7,  7,  7,
- 7,  7,  7,  7,  7,  7,  7,  7,
- 8,  8,  8,  8,  8,  8,  8, 11,
-11, 11, 11, 11, 11, 11, 11, 11,
-11, 11, 11, 11, 11, 11, 11, 11,
-11, 13, 13, 13, 13, 13, 13, 13, 
-13, 13, 13, 13, 13, 13, 13, 13, 
-13, 13, 13, 13, 13, 13, 13, 13, 
-13, 13, 13, 13, 13,  5,  7,  7, 
- 7,  7 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10,  10,  10, 
+ 10,  10, 10, 10, 10, 10, 10, 10,
+ 10,  10, 10, 10, 10, 10,  10,  10,
+ 10,  10, 10, 10, 10, 10,  10,  10,
+ 10,  10
 };
 
 // (NUMBER_OF_BATCHES) different subsets (i.e., batches)
@@ -31,7 +43,8 @@ static uint8_t SIZE_OF_EACH_BATCH[NUMBER_OF_BATCHES] = {15, 15, 15, 15, 14};
 static uint8_t *BATCHES[NUMBER_OF_BATCHES] = { BATCH_0, BATCH_1, BATCH_2, BATCH_3, BATCH_4 };
 
 static uint8_t LAST_ISOGENY[NUMBER_OF_BATCHES] = { 70, 71, 72, 73, 69 };
-static uint16_t NUMBER_OF_ISOGENIES = 763;
+//static uint16_t NUMBER_OF_ISOGENIES = 763;
+static uint16_t NUMBER_OF_ISOGENIES = 740;
 
 // The complement of each batch
 static uint8_t SIZE_OF_EACH_COMPLEMENT_BATCH[NUMBER_OF_BATCHES] = {59, 59, 59, 59, 60};

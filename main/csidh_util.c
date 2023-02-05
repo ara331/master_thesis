@@ -20,16 +20,7 @@ void normalize_public_key(proj public_key, fp *out) {
     memcpy(out, n_public_key, sizeof(fp));
 }
 
-// slightly modified csidh from main/csidh.c
-static uint8_t csidh(proj out, const uint8_t sk[], const proj in)
-{
-  if (!validate(in)) {
-    return 0;
-  };
 
-  action_evaluation(out, sk, in);
-  return 1;
-};
 
 void pprint_ss(uint64_t *x)
 {
@@ -98,6 +89,19 @@ int read_stdin(uint8_t *buf, int len) {
   }
   return c;
 }
+
+
+// slightly modified csidh from main/csidh.c
+static uint8_t csidh(proj out, const uint8_t sk[], const proj in)
+{
+  if (!validate(in)) {
+    return 0;
+  };
+
+  action_evaluation(out, sk, in);
+  return 1;
+};
+
 
 int main(int argc, char **argv) {
   uint8_t private_key[N];
@@ -258,3 +262,6 @@ int main(int argc, char **argv) {
 
   return 1;
 }
+
+
+

@@ -27,13 +27,75 @@
 // This above functions must be implemented allowing that the output variable can be one of the inputs.
 
 #endif
-
+//typedef struct fp { uint64_t c[LIMBS]; } fp;
 typedef uint64_t fp[NUMBER_OF_WORDS]      __attribute__((aligned(64)));		// 512-bits integer number in Montgomery domain (To be used with the patching)
+//typedef uint64_t uint[NUMBER_OF_WORDS]    __attribute__((aligned(64)));
+
 
 extern const fp p;
 extern const fp R_mod_p;
 extern const fp R_squared_mod_p;	// required for mapping a random fp element 2 <= u <= (p-1)/2 into the Montgomery domain
 extern const fp p_minus_1_halves;	// (p-1)/2 used for find a random fp element 2 <= u <= (p-1)/2
+
+
+
+//以下CSI-FiShの定数．(unitとfpで違うのが不安点ではある．)
+//しかもアセンブリ言語で表現しないといけないっぽい．
+// const uint64_t pbits = 511;
+
+// const struct uint p = {{
+//     0x1b81b90533c6c87b, 0xc2721bf457aca835, 0x516730cc1f0b4f25, 0xa7aac6c567f35507,
+//     0x5afbfcc69322c9cd, 0xb42d083aedc88c42, 0xfc8ab0d15e3e4c4a, 0x65b48e8f740f89bf,
+// }};
+
+// const struct fp fp_0 = {{0}};
+
+// /* 2^512 mod p */
+// const struct fp fp_1 = {{
+//     0xc8fc8df598726f0a, 0x7b1bc81750a6af95, 0x5d319e67c1e961b4, 0xb0aa7275301955f1,
+//     0x4a080672d9ba6c64, 0x97a5ef8a246ee77b, 0x06ea9e5d4383676a, 0x3496e2e117e0ec80,
+// }};
+
+// /* (2^512)^2 mod p */
+// const struct fp r_squared_mod_p = {{
+//     0x36905b572ffc1724, 0x67086f4525f1f27d, 0x4faf3fbfd22370ca, 0x192ea214bcc584b1,
+//     0x5dae03ee2f5de3d0, 0x1e9248731776b371, 0xad5f166e20e4f52d, 0x4ed759aea6f3917e,
+// }};
+
+// /* -p^-1 mod 2^64 */
+// const uint64_t inv_min_p_mod_r = 0x66c1301f632e294d;
+
+// /* p - 2 */
+// const struct uint p_minus_2 = {{
+//     0x1b81b90533c6c879, 0xc2721bf457aca835, 0x516730cc1f0b4f25, 0xa7aac6c567f35507,
+//     0x5afbfcc69322c9cd, 0xb42d083aedc88c42, 0xfc8ab0d15e3e4c4a, 0x65b48e8f740f89bf,
+// }};
+
+// /* (p - 1) / 2 */
+// const struct uint p_minus_1_halves = {{
+//     0x8dc0dc8299e3643d, 0xe1390dfa2bd6541a, 0xa8b398660f85a792, 0xd3d56362b3f9aa83,
+//     0x2d7dfe63499164e6, 0x5a16841d76e44621, 0xfe455868af1f2625, 0x32da4747ba07c4df,
+// }};
+
+// /* floor(4 sqrt(p)) */
+// const struct uint four_sqrt_p = {{
+//     0x17895e71e1a20b3f, 0x38d0cd95f8636a56, 0x142b9541e59682cd, 0x856f1399d91d6592,
+//     0x02,
+// }};
+
+//extern const uint64_t pbits;
+//extern const uint p;?
+extern const fp fp_0;
+extern const fp fp_1;
+//extern const fp r_squared_mod_p;
+extern const uint64_t inv_min_p_mod_r;
+extern const fp p_minus_2;
+//extern const uint p_minus_1_halves;
+extern const fp four_sqrt_p;
+
+
+
+
 
 // All operations are perfomed in the Montgomery domain
 void fp_cswap(fp x, fp y, uint8_t c);

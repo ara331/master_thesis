@@ -193,15 +193,17 @@ void action_evaluation(proj C, const uint8_t key[], const proj A)
 					
 					if ( isequal(batches[m][i], last_isogeny[m]) == 0)	// constant-time ask: just for avoiding the last isogeny evaluation
 					{
+						//どんな時でも使う．
 						yEVAL(current_T[0], current_T[0], K, batches[m][i]);	// evaluation of T[0]
 						yEVAL(current_T[1], current_T[1], K, batches[m][i]);	// evaluation of T[1]
 
 						yMUL(current_T[1], current_T[1], current_A, batches[m][i]);	// [l]T[1]
 					};
-
+					//tmp_e[batches[m][i]] = (((ec >> 1) - (bc ^ 1)) << 1) ^ (ec & 0x1);
 					tmp_e[batches[m][i]] = ((((ec >> 1) - (bc ^ 1)) ^ bc) << 1) ^ ((ec & 0x1) ^ bc);
 					counter[batches[m][i]] -= 1;
 					isog_counter += 1;
+					//fp_print(current_A, NUMBER_OF_WORDS, 0, "E_alice_a 中間");
 				}
 				else
 				{

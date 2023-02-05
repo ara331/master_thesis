@@ -7,17 +7,29 @@
 #define MY 0
 
 // (each entry corresponds to the number of degree-(l_i) to be required in the action: this the one given in Onuki et al. work)
+// static int8_t B[] =	{
+//  2,  3, 3, 3, 3, 3,  3,  3, 
+//  3,  3, 3, 4, 4, 4,  4,  4, 
+//  4,  4, 4, 4, 4, 4,  4,  4, 
+//  4,  4, 5, 5, 5, 5,  5,  5, 
+//  5,  6, 6, 6, 6, 6,  7,  7, 
+//  7,  7, 7, 7, 7, 7,  7,  7, 
+//  7,  7, 8, 9, 9, 9, 10, 10,
+// 10, 10, 9, 8, 8, 8,  7,  7,
+//  7,  7, 7, 6, 5, 1,  2,  2,
+//  2,  2
+// };
 static int8_t B[] =	{
- 2,  3, 3, 3, 3, 3,  3,  3, 
- 3,  3, 3, 4, 4, 4,  4,  4, 
- 4,  4, 4, 4, 4, 4,  4,  4, 
- 4,  4, 5, 5, 5, 5,  5,  5, 
- 5,  6, 6, 6, 6, 6,  7,  7, 
- 7,  7, 7, 7, 7, 7,  7,  7, 
- 7,  7, 8, 9, 9, 9, 10, 10,
-10, 10, 9, 8, 8, 8,  7,  7,
- 7,  7, 7, 6, 5, 1,  2,  2,
- 2,  2
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5,  5,  5, 
+ 5,  5, 5, 5, 5, 5, 5, 5,
+ 5,  5, 5, 5, 5, 5,  5,  5,
+ 5,  5, 5, 5, 5, 5,  5,  5,
+ 5,  5
 };
 
 // (NUMBER_OF_BATCHES) different subsets (i.e., batches)
@@ -29,7 +41,8 @@ static uint8_t SIZE_OF_EACH_BATCH[NUMBER_OF_BATCHES] = {25, 25, 24};
 static uint8_t *BATCHES[NUMBER_OF_BATCHES] = { BATCH_0, BATCH_1, BATCH_2 };
 
 static uint8_t LAST_ISOGENY[NUMBER_OF_BATCHES] = { 72, 73, 71 };
-static uint16_t NUMBER_OF_ISOGENIES = 404;
+//static uint16_t NUMBER_OF_ISOGENIES = 404;
+static uint16_t NUMBER_OF_ISOGENIES = 370;
 
 // The complement of each batch
 static uint8_t SIZE_OF_EACH_COMPLEMENT_BATCH[NUMBER_OF_BATCHES] = { 49, 49, 50 };

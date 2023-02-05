@@ -14,46 +14,81 @@ FILES_REQUIRED_IN_CSIDH=./lib/rng.c \
 			./lib/fp$(BITLENGTH_OF_P).S \
 			./lib/point_arith.c ./lib/isogenies.c \
 			./lib/action_simba_$(shell echo $(TYPE) | tr A-Z a-z).c \
+			./lib/classgroup.c \
+			./lib/reduce.c \
+			-I XKCP/bin/generic64/ \
+			-L XKCP/bin/generic64/ \
 			./main/csidh.c
 
 OUTPUT_CSIDH=./bin/csidh
-CFLAGS_CSIDH=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE)
+#CFLAGS_CSIDH=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE)
+CFLAGS_CSIDH=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm -g -lgmp -lcrypto -lkeccak
 
 FILES_REQUIRED_IN_CSIDH_UTIL=./lib/rng.c \
 			./lib/fp$(BITLENGTH_OF_P).S \
 			./lib/point_arith.c ./lib/isogenies.c \
 			./lib/action_simba_$(shell echo $(TYPE) | tr A-Z a-z).c \
+			./lib/classgroup.c \
+			./lib/reduce.c \
+			-I XKCP/bin/generic64/ \
+			-L XKCP/bin/generic64/ \
 			./main/csidh_util.c
+			
+
 OUTPUT_CSIDH_UTIL=./bin/csidh-p$(BITS)-util
-CFLAGS_CSIDH_UTIL=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -DBITS=$(BITS)
+CFLAGS_CSIDH_UTIL=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -DBITS=$(BITS) -lm -g -lgmp -lcrypto -lkeccak
 
 # REQUIRED FOR COSTS
 FILES_REQUIRED_IN_ACTION=./lib/rng.c \
 			./lib/fp$(BITLENGTH_OF_P).S \
 			./lib/point_arith.c ./lib/isogenies.c \
 			./lib/action_simba_$(shell echo $(TYPE) | tr A-Z a-z).c \
+			./lib/classgroup.c \
+			./lib/reduce.c \
+			-I XKCP/bin/generic64/ \
+			-L XKCP/bin/generic64/ \
 			./main/action_cost.c
 
 OUTPUT_ACTION=./bin/action_cost
-CFLAGS_ACTION=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm
+CFLAGS_ACTION=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm -g -lgmp -lcrypto -lkeccak
 
 # REQUIRED FOR CLOCK CYCLES
 FILES_REQUIRED_IN_ACTION_CC=./lib/rng.c \
 			./lib/fp$(BITLENGTH_OF_P).S \
 			./lib/point_arith.c ./lib/isogenies.c \
 			./lib/action_simba_$(shell echo $(TYPE) | tr A-Z a-z).c \
+			./lib/classgroup.c \
+			./lib/reduce.c \
+			-I XKCP/bin/generic64/ \
+			-L XKCP/bin/generic64/ \
 			./main/action_timing.c
 
+
 OUTPUT_ACTION_CC=./bin/action_timing
-CFLAGS_ACTION_CC=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm
+CFLAGS_ACTION_CC=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm -g -lgmp -lcrypto -lkeccak
+
+#vectorの統計．
+FILES_REQUIRED_IN_VECTOR=./lib/rng.c \
+			./lib/fp$(BITLENGTH_OF_P).S \
+			./lib/point_arith.c ./lib/isogenies.c \
+			./lib/classgroup.c \
+			./lib/reduce.c \
+			-I XKCP/bin/generic64/ \
+			-L XKCP/bin/generic64/ \
+			./lib/vector.c \
+			./main/vector_sampling.c
+
+
+OUTPUT_VECTOR=./bin/vector_sampling
+CFLAGS_VECTOR=-O3 -funroll-loops -fomit-frame-pointer -m64 -mbmi2 -DFP_$(BITLENGTH_OF_P) -D$(TYPE) -lm -g -lgmp -lcrypto -lkeccak
+
+
 
 help:
-	@echo "\nusage: make csidh BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/RELATION]"
-	@echo "usage: make csidh_util BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/RELATION]"
-	@echo "usage: make util_test"
-	@echo "usage: make regenerate_test_vectors"
-	@echo "usage: make action_cost BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/RELATION]"
-	@echo "usage: make action_timing BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/RELATION]"
+	@echo "\nusage: make csidh BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/PROPOSAL_1/PROPOSAL_2]"
+	@echo "usage: make action_cost BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/PROPOSAL_1/PROPOSAL_2]"
+	@echo "usage: make action_timing BITLENGTH_OF_P=[512] TYPE=[WITHDUMMY_1/WITHDUMMY_2/DUMMYFREE/PROPOSAL_1/PROPOSAL_2]"
+	@echo "usage: make vector_sampling BITLENGTH_OF_P=[512] TYPE=[VECTOR]"
 	@echo "usage: make clean\n"
 	@echo "In addition, you can use an specific compiler by setting the variable CC with the "
 	@echo "compiler name.\n\t\tCC=[any version of gcc compiler]"
@@ -93,6 +128,9 @@ action_cost:
 
 action_timing: 
 	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_ACTION_CC) -o $(OUTPUT_ACTION_CC) $(CFLAGS_ACTION_CC) $(CFLAGS_ALWAYS)
+
+vector_sampling:
+	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_VECTOR) -o $(OUTPUT_VECTOR) $(CFLAGS_VECTOR) $(CFLAGS_ALWAYS)
 
 clean:
 	rm -f ./bin/* sample-keys/*.test_result
