@@ -1,4 +1,4 @@
-修論　サイドチャネル攻撃に安全かつ高速な耐量子暗号CSIDH<br>
+修論　サイドチャネル攻撃に安全かつ高速な耐量子暗号CSIDH
 
 Stronger and Faster Side-Channel Protections for CSIDH (https://github.com/JJChiDguez/csidh)
 
