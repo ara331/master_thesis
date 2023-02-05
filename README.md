@@ -1,7 +1,7 @@
 修論　サイドチャネル攻撃に安全かつ高速な耐量子暗号CSIDH
 
-# Stronger and Faster Side-Channel Protections for CSIDH (https://github.com/JJChiDguez/csidh)
-# CSI-Fish Efficient isogeny based signatures through class group computations (https://github.com/KULeuven-COSIC/CSI-FiSh)
+Stronger and Faster Side-Channel Protections for CSIDH (https://github.com/JJChiDguez/csidh)
+CSI-Fish Efficient isogeny based signatures through class group computations (https://github.com/KULeuven-COSIC/CSI-FiSh)
 
 のソースを組み合わせて作成．
 
