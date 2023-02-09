@@ -6,6 +6,8 @@ CSI-Fish Efficient isogeny based signatures through class group computations (ht
 
 のソースを組み合わせて作成．
 
+実装にはgmpライブラリが必要
+
 action_costについて，babaiのアルゴリズムなどはカウントしてない．
 
 前半の計算において計算の仕方を変えることによって，後半の計算の同種写像計算の回数が変わる．VECTOR1とVECTOR2はそのやり方の違い．VECTOR2の方が若干早い．
