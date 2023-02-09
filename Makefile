@@ -120,17 +120,20 @@ util_test: util
 	rm sample-keys/*.test_result
 	echo "END util-test"
 
-csidh:
+csidh: keccaklib
 	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_CSIDH) -o $(OUTPUT_CSIDH) $(CFLAGS_CSIDH) $(CFLAGS_ALWAYS)
 
-action_cost: 
+action_cost: keccaklib
 	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_ACTION) -o $(OUTPUT_ACTION) $(CFLAGS_ACTION) $(CFLAGS_ALWAYS)
 
-action_timing: 
+action_timing: keccaklib
 	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_ACTION_CC) -o $(OUTPUT_ACTION_CC) $(CFLAGS_ACTION_CC) $(CFLAGS_ALWAYS)
 
-vector_sampling:
+vector_sampling: keccaklib
 	$(CC) $(INC_DIR) $(FILES_REQUIRED_IN_VECTOR) -o $(OUTPUT_VECTOR) $(CFLAGS_VECTOR) $(CFLAGS_ALWAYS)
+
+keccaklib: 
+	(cd XKCP; make generic64/libkeccak.a)
 
 clean:
 	rm -f ./bin/* sample-keys/*.test_result
