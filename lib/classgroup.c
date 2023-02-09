@@ -77,6 +77,9 @@ void sub_multiple(mpz_t *target, const char *vector, mpz_t multiple){
 
 		mpz_sub(target[i],target[i],tmp);
 
+		//予想で変えてみる．
+		//mpz_sub(target[i],tmp,target[i]);
+
 		mpz_clear(tmp);
 	}
 }
@@ -98,6 +101,7 @@ void mod_cn_2_vec(mpz_t a, int8_t *vec){
 	for(int i=0; i<N; i++){
 		mpz_init(target[i]);
 	}
+	//(a,0,0,...,0)というベクトルが入力
 	mpz_set(target[0], a);
 
 	// babai nearest plane
@@ -131,11 +135,13 @@ void mod_cn_2_vec(mpz_t a, int8_t *vec){
 		mpf_clear(floor);
 		mpf_clear(remainder);
 	}
-
+	//printf("reduceする前＝[");
 	for(int i=0; i<N ; i++ ){
 		vec[i] = mpz_get_si(target[i]);
+		//gmp_printf("%Zd,",vec[i]);
 		mpz_clear(target[i]);
 	}
+	//printf("]\n");
 
 	int norm = L1(vec);
 

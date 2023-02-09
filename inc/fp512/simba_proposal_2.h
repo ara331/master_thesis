@@ -122,7 +122,14 @@ static uint8_t *BATCHES[NUMBER_OF_BATCHES] = { BATCH_0, BATCH_1, BATCH_2 };
 
 static uint8_t LAST_ISOGENY[NUMBER_OF_BATCHES] = { 72, 73, 71 };
 static uint16_t NUMBER_OF_ISOGENIES = 370;
-static uint16_t MID_NUMBER_OF_ISOGENIES=299;
+// VECTOR1
+//static uint16_t MID_NUMBER_OF_ISOGENIES=299;
+// VECTOR2
+// static uint16_t MID_NUMBER_OF_ISOGENIES=297;
+//-eじゃなくてeに変えたとき，
+static uint16_t MID_NUMBER_OF_ISOGENIES=296;
+//ONECURVE
+// static uint16_t MID_NUMBER_OF_ISOGENIES=200;
 // The complement of each batch
 static uint8_t SIZE_OF_EACH_COMPLEMENT_BATCH[NUMBER_OF_BATCHES] = { 49, 49, 50 };
 static uint8_t COMPLEMENT_OF_EACH_BATCH[NUMBER_OF_BATCHES][N] = {

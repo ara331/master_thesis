@@ -74,12 +74,12 @@ int main()
     int8_t mid_r[N];
     proj random_E;
 
-    uint16_t mid_number_of_isogenies=305;
+    uint16_t mid_number_of_isogenies=296;
 
     int norm0=0;
     int norm1=0;
 
-    for (uint16_t start=mid_number_of_isogenies;start<=mid_number_of_isogenies+50;start++){
+    for (uint16_t start=mid_number_of_isogenies;start<=mid_number_of_isogenies+1;start++){
         norm0=0;
         norm1=0;
         printf("%d個で止める",start);
