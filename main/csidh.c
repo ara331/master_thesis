@@ -48,7 +48,6 @@ int main()
 	uint8_t sk_alice[N],	// secret key of Alice
 	         sk_bob[N];	// secret key of Bob
 
-	
 	// ---
 	proj random_E1, random_E2, tmp_E;
 	uint8_t key[N];
